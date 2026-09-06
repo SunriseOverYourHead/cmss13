@@ -307,7 +307,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		var/datum/squad/predicted = get_eligible_squad(job.title, preset.faction, player.client?.prefs?.preferred_squad, FALSE, simulated_fill)
 
 		if(istype(predicted, /datum/squad/marine/cryo))
-			free_role(GLOB.RoleAuthority.roles_for_mode[player.job], force = TRUE)
+			job.current_positions--
 			unassigned_players += player
 			player.job = null
 /**
@@ -437,8 +437,8 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 	return TRUE
 
-/datum/authority/branch/role/proc/free_role(datum/job/J, latejoin = 1, force = FALSE) //Want to make sure it's a job, and nothing like a MODE or special role.
-	if((istype(J) && J.total_positions != -1 && J.get_total_positions(latejoin) >= J.current_positions) || force)
+/datum/authority/branch/role/proc/free_role(datum/job/J, latejoin = 1) //Want to make sure it's a job, and nothing like a MODE or special role.
+	if(istype(J) && J.total_positions != -1 && J.get_total_positions(latejoin) >= J.current_positions)
 		J.current_positions--
 		return 1
 
