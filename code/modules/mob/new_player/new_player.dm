@@ -157,14 +157,6 @@
 	SSticker.mode.update_gear_scale()
 	SSticker.mode.update_energy_scale()
 
-	var/current_marine_count = get_total_marines()
-	for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
-
-		if(target_squad.dynamic_scaling)
-			target_squad.roles_cap[JOB_SQUAD_ENGI] = engi_slot_formula(current_marine_count)
-			target_squad.roles_cap[JOB_SQUAD_MEDIC] = medic_slot_formula(current_marine_count)
-
-
 	var/latejoin_larva_drop = SSticker.mode.latejoin_larva_drop
 
 	if(ROUND_TIME < XENO_ROUNDSTART_LATEJOIN_LARVA_TIME)

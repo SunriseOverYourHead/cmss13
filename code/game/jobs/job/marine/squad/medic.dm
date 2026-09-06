@@ -1,4 +1,4 @@
-#define MARINE_TO_TOTAL_SPAWN_RATIO (3/4)
+#define MARINE_TO_TOTAL_SPAWN_RATIO (1 - INITIAL_XENO_TO_MARINE_RATIO)
 
 /datum/job/marine/medic
 	title = JOB_SQUAD_MEDIC
@@ -47,5 +47,21 @@ AddTimelock(/datum/job/marine/medic, list(
 	name = JOB_SQUAD_MEDIC
 	icon_state = "medic_spawn"
 	job = /datum/job/marine/medic
+
+/obj/effect/landmark/start/marine/medic/alpha
+	icon_state = "medic_spawn_alpha"
+	squad = SQUAD_MARINE_1
+
+/obj/effect/landmark/start/marine/medic/bravo
+	icon_state = "medic_spawn_bravo"
+	squad = SQUAD_MARINE_2
+
+/obj/effect/landmark/start/marine/medic/charlie
+	icon_state = "medic_spawn_charlie"
+	squad = SQUAD_MARINE_3
+
+/obj/effect/landmark/start/marine/medic/delta
+	icon_state = "medic_spawn_delta"
+	squad = SQUAD_MARINE_4
 
 #undef MARINE_TO_TOTAL_SPAWN_RATIO
