@@ -570,7 +570,8 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 
 /obj/structure/machinery/computer/overwatch/groundside_operations/ui_data(mob/user)
-	var/list/data = pack_radio_data()
+	var/list/data = list()
+	pack_radio_data(data)
 	data["executive"] = isnull(role)
 	data["theme"] = ui_theme
 
